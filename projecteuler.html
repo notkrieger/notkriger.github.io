@@ -1,0 +1,37 @@
+<!-- 
+    htmal code blach labclh balcjablhsbcslj nsd 
+-->
+
+<title> 
+    project euler problem solutions
+</title>
+
+<li>
+    <a href="index.html"> 
+        homepage </a>
+</li>
+
+<p>
+    some of my methods for solving some porject euler problems. <br>
+    it is very unlikely these are optimals solutions. <br><br>
+</p>
+
+<p>
+    <p style="font-size: 24px;"> 31 - Coin Sums </p>
+    how many ways can you make $2 using the following coins: 1c, 2c, 5c, 10c, 20c, 50c, $1, $2 <br>
+    <br>
+    initial thoughts, i'll define p(n) to be the number of ways you can reach n using the set of coins. <br>
+    this means p(0) = p(1) = 1. <br>
+    for every i, p(i+1) >= p(i), you can attach 1p to every way in p(i). <br>
+    what about other coins? it is not as simple as p(n) = Σ꜀ p(n-c), for c in coins as i first thought because this double counts many solutions.
+    <br> 
+    this when i figured out all i had to do to stop double counting is make sure the coins picked in descending order. <br> 
+    this makes so if a coin c is picked first, then no coin greater then c can be picked until the target is reached. <br>
+    <img style="max-width: 600px; max-height: 450px" src="projecteuler/coinsums attempt 2.png">
+
+</p>
+
+
+
+
+
