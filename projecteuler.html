@@ -26,11 +26,15 @@
     <br>
     initial thoughts, i'll define p(n) to be the number of ways you can reach n using the set of coins. <br>
     this means p(0) = p(1) = 1. <br>
-    for every i, p(i+1) >= p(i), you can attach 1p to every way in p(i). <br>
-    what about other coins? it is not as simple as p(n) = Σ꜀ p(n-c), for c in coins as i first thought because this double counts many solutions.
+    for every i < n, p(i+1) >= p(i), because you can attach 1p to every solution to p(i). <br>
+    so if i account for all coins like this we get p(n) = Σ꜀ p(n-c), for c in coins. <br>
+    unfortunately this double counts many solutions i.e. one solution to p(4) is (2, 1, 1) and a solution to p(5) is (2, 2, 1) <br>
+    the method described above would get (2, 1, 1, 2) as a solution to p(6) twice. (2, 1, 1) + (2) and (2, 2, 1) + (1)<br>
     <br> 
-    this when i figured out all i had to do to stop double counting is make sure the coins picked in descending order. <br> 
-    this makes so if a coin c is picked first, then no coin greater then c can be picked until the target is reached. <br>
+    this when i saw that all i had to do to stop double counting is make sure the coins picked in descending order. <br> 
+    so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
+    this ensures that all solutions which reach the target are unique. and therefore a simple recursive solution is applicable. <br>
+    since target was only 200 with 8 coins i didnt bother trying to optimise anymore, but i know this is a slow solution. <br>
     <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a>
     <br><br><br>    
 
