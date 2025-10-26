@@ -6,6 +6,26 @@
     project euler problem solutions
 </title>
 
+<head>
+    <style>
+        /* Set display to none for image*/
+        #image {
+            display: none;
+        }
+    </style>
+</head>
+
+<script>
+        function show(imageid, btnid) {
+            /* Access image by id and change 
+            the display property to block*/
+            document.getElementById(imageid)
+                .style.display = "block";
+            document.getElementById(btnid)
+                .style.display = "none";
+        }
+</script>
+
 <li>
     <a href="index.html"> 
         homepage </a>
@@ -13,7 +33,7 @@
 
 <p>
     some of my methods for solving some porject euler problems. <br>
-    spoilers ahead if you want to try do not look at pictures. <br>
+    spoilers ahead if you want to try for yourself do not look at pictures. <br>
     it is very unlikely these are optimals solutions. <br><br>
 
 </p>
@@ -29,7 +49,10 @@
     <br> 
     this when i figured out all i had to do to stop double counting is make sure the coins picked in descending order. <br> 
     this makes so if a coin c is picked first, then no coin greater then c can be picked until the target is reached. <br>
-    <img style="max-width: 600px; max-height: 450px" src="projecteuler/coinsums attempt 2.png">
+    <img id="coin sums code" style="max-width: 600px; max-height: 450px" src="projecteuler/coinsums attempt 2.png">
+    <button type="button" onclick="show('coin sums code', 'coin sums btn')" id="coin sums btn">
+        show solution
+    </button>
 
 </p>
 
