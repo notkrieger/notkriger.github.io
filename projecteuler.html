@@ -48,7 +48,7 @@
     <img style="max-width: 450px; max-height: 300px" src="projecteuler/limame squares example.png">
     <br>
     my first step was to draw a few little hollow squares to look for patterns. <br>
-    i noticed the number of cells in the hollow square was easily calculatable if you know the side length of the inner and outer square. <br>
+    i noticed the number of cells in the hollow square was easily calculatable if you know the side length of the "inner" and "outer" square. <br>
     num_cells = outerN² - innerN² <br>
     now all i needed to do was define an iterative process which checks all outer and inner N's until num_cells exceeded 1 million. <br>
     i settled on iterating through edge thickness and outerN in a nested while loop. <br> 
@@ -56,11 +56,26 @@
     pe difficulty: 30/100<br>
     my rating: 7/100 <br>
     <a href="projecteuler/limanae squares finished attempt.png" target="_blank"> show solution </a>
-    <br><br><br>    
-
+    <br><br><br>
 </p>
 
+<p>
+    <p style="font-size: 24px;"> 174 - Hollow Square Laminae II </p>
+    this one just expanded on the last problem. its a bit of word salad: <br>
+    If t represents the number of tiles used, we shall say t=8 is type L(1) and t=32 is type L(2). the type describes how many unique hollow squares you can construct for a given t. <br>
+    Now let N(n) be the number of t ≤ 1e6 such that t is type L(n). What is Σₙ N(n) for n = 1-10? <br>
+    <br>
+    so thats a lot of words but what N(n) is asking is: how many numbers under 1 million can you construct n unique hollow squares with? <br>
+    using the code from the previous problem this is rather trivial. all i did was create an array which will store how many unique hollow squares each t can create. <br>
+    because of the way the algorithm works in the previous problem it is guaranteed to generate all hollow squares using less then 1 mil cells without duplicates. <br>
+    once the array is generated i just wrote a small function to count how many elements in the array equal some target value. <br>
+    then sum that from 1 - 10. dont be like me i spent like 10 minutes getting it wrong because i was looping from 0 - 10 instead :( <br>
 
+    pe difficulty: 40/100<br>
+    my rating: 10/100 <br>
+    <a href="projecteuler/limanae squares 2 finished attempt.png" target="_blank"> show solution </a>
+    <br><br><br>
+</p>
 
 
 
