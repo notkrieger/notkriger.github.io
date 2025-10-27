@@ -18,8 +18,8 @@
 </li>
 
 <p>
-    some of my methods for solving some porject euler problems. <br>
-    spoilers ahead if you want to try for yourself do not look at pictures. <br>
+    some of my methods for solving some project euler problems i found interesting/challenging. <br>
+    spoilers ahead if you want to try for yourself do not look at solutions. <br>
     it is very unlikely these are optimals solutions. <br><br>
 
 </p>
@@ -36,10 +36,9 @@
     unfortunately this double counts many solutions i.e. one solution to p(4) is (2, 1, 1) and a solution to p(5) is (2, 2, 1) <br>
     the method described above would get (2, 1, 1, 2) as a solution to p(6) twice. (2, 1, 1) + (2) and (2, 2, 1) + (1)<br>
     <br> 
-    this when i saw the trick to stop double counting is to make sure the coins picked in descending order. <br> 
-    so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
+    to stop double counting is to make sure the coins picked in descending order. so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
     this ensures that all solutions which reach the target are unique. and therefore a simple recursive solution is applicable. <br>
-    since target was not very big i didnt bother trying to optimise anymore, but i know this is a slow solution, lots of redundant calculations. <br>
+    since target and coin set were not very big i didnt bother trying to optimise anymore. i know this is a slow solution, lots of redundant calculations. <br>
     pe difficulty: 5/100<br>
     my rating: 8/100 <br>
     <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a>
@@ -102,12 +101,33 @@
     then i counted how many unique double areas that checkout had, if it only had 1 unique double then i just continued. if there were 2 double present in the checkout then there was one other solution, as depicted in the image above, so i added 2. <br>
     if there were 3 unique doubles, then there were 2 other solutions. you may, like me, think this is meant to be 6 (3!), but remember only the last dart matters so we only add 3. <br>
     because only the total number of combinations was needed not the combinations themselves i neglected to create some sort of list of checkouts and just kept a running tally. <br>
-    this was more difficult then it seemed on the tin. i think my solution is decently fast (less then a second on my old laptop :o). fortunately a dartboard only has 62 areas. <br>
+    this was more difficult then it seemed on the tin. i think my solution is decent (less then a second on my old laptop :o). fortunately a dartboard only has 62 areas. <br>
     pe difficulty: 45/100 <br>
-    my rating: 25/100 <br>
+    my rating: 30/100 <br>
     <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a>
     <br><br><br>
 </p>
 
 
+<p>
+    <p style="font-size: 24px;"> #78 - Coin Partitions </p>
+    the partition function p(n) describes how many unique ways you can separate a number n into different piles. p(5) = 7 you solve these pretty quickly with pen and paper. <br>
+    p(100) = 190,569,292. the goal find the smallest n such that p(n) mod 1e6 = 0. <br>
+    <br>
+    this problem is similar to the coins sums problem, except we we are not limited to only groups of 1, 2, 5, 10, etc. and we do not know what our final value of n will be. <br>
+    so i started by adjusting the code from my solution of 31 - coin sums to account for any pile size. this worked, however is very slow due to the recalculating the same thing many times. <br>
+    if i had only optimised my code at the time this problem would have been free. <br>
+    <br>
+    okay a while later. problem not free. i thought i got a decent dynamic solution (
+        <a href="projecteuler/78 dynamic attempt.png" target="_blank"> dynamic attempt </a>
+    ), always gives same answer as recursive (upto like 50). <br>
+    so i run it in a while loop like fashion, gives an answer of 2301. pe says X wrong. wtf? recheck to bigger numbers with recursive, still looks good. <br>
+    in my confusion i go to google, all answers i see are refering to euler's pentagonal numbers and recurrence relations, nothing like my dynamic programming solution. <br>
+    also i found what the real answer was. spoiler: not 2301, like 30x bigger. well i try my dp solution upto 60k, and its slow, too slow O(n²) is not enough need a linear solution. <br>
+    so i am now going to try the method i see people online do. <br>
+    <br>
 
+
+    <br><br><br>    
+
+</p>
