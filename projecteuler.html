@@ -25,46 +25,49 @@
 </p>
 
 <p>
-    <p style="font-size: 24px;"> 31 - Coin Sums </p>
+    <p style="font-size: 24px;"> #31 - Coin Sums </p>
     how many ways can you make $2 using the following coins: {1c, 2c, 5c, 10c, 20c, 50c, $1, $2}? <br>
     <br>
     initial thoughts, i'll define p(n) to be the number of ways you can reach n using the set of coins. <br>
-    this means p(0) = p(1) = 1. <br>
-    for every i < n, p(i+1) >= p(i), because you can attach 1p to every solution to p(i). <br>
+    this means p(0) = p(1) = 1. the goal is to find p(200).<br>
+    p(n) must be a non-decreasing function because you can attach 1c to every solution for the previous n. <br>
+    so p(n) >= p(n-1). can i repeat this process for the other coins. so for applying the same logic as the 1c we know p(n) >= p(n-2). <br>
     so if i account for all coins like this we get p(n) = Σ꜀ p(n-c), for c in coins. <br>
     unfortunately this double counts many solutions i.e. one solution to p(4) is (2, 1, 1) and a solution to p(5) is (2, 2, 1) <br>
     the method described above would get (2, 1, 1, 2) as a solution to p(6) twice. (2, 1, 1) + (2) and (2, 2, 1) + (1)<br>
     <br> 
-    this when i saw that all i had to do to stop double counting is make sure the coins picked in descending order. <br> 
+    this when i saw the trick to stop double counting is to make sure the coins picked in descending order. <br> 
     so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
     this ensures that all solutions which reach the target are unique. and therefore a simple recursive solution is applicable. <br>
-    since target was not very big i didnt bother trying to optimise anymore, but i know this is a slow solution. <br>
+    since target was not very big i didnt bother trying to optimise anymore, but i know this is a slow solution, lots of redundant calculations. <br>
     pe difficulty: 5/100<br>
-    my rating: 10/100 <br>
+    my rating: 8/100 <br>
     <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a>
     <br><br><br>    
 
 </p>
 
 <p>
-    <p style="font-size: 24px;"> 173 - Hollow Square Laminae I </p>
+    <p style="font-size: 24px;"> #173 - Hollow Square Laminae I </p>
     how many hollow squares (see image below) can you construct using a million blocks? <br>
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/limame squares example.png">
     <br>
     my first step was to draw a few little hollow squares to look for patterns. <br>
-    i noticed the number of cells in the hollow square was easily calculatable if you know the side length of the "inner" and "outer" square. <br>
+    initially i was thinking that i would have to account for two cases, when the "centre" of the square was 1x1 (odd) vs 2x2 (even). <br>
+    i then thought of the hollow squares as a binary sequence, eg. the left square above would be 011. and tried to figure out a formula to count the number of cells from the binary sequence. <br>
+    idk why this was my first approach as it would have been massively slower and overkill. luckily i noticed the number of cells in the hollow square was easily calculatable if you know the side length of the "inner" and "outer" square. <br>
     num_cells = outerN² - innerN² <br>
     now all i needed to do was define an iterative process which checks all outer and inner N's until num_cells exceeded 1 million. <br>
-    i settled on iterating through edge thickness and outerN in a nested while loop. <br> 
+    i settled on iterating through "edge thickness" and outerN in a nested while loop. this way innerN = outerN - edgeThickness at each step. <br> 
     i found this problem easier then expected and i think this is a pretty efficient method. <br>
     pe difficulty: 30/100<br>
-    my rating: 7/100 <br>
+    my rating: 10/100 <br>
     <a href="projecteuler/limanae squares finished attempt.png" target="_blank"> show solution </a>
     <br><br><br>
 </p>
 
 <p>
-    <p style="font-size: 24px;"> 174 - Hollow Square Laminae II </p>
+    <p style="font-size: 24px;"> #174 - Hollow Square Laminae II </p>
     this one just expanded on the last problem. its a bit of word salad: <br>
     If t represents the number of tiles used, we shall say t=8 is type L(1) and t=32 is type L(2). the type describes how many unique hollow squares you can construct for a given t. <br>
     Now let N(n) be the number of t ≤ 1e6 such that t is type L(n). What is Σₙ N(n) for n = 1-10? <br>
@@ -82,8 +85,26 @@
 </p>
 
 <p>
-    <p style="font-size: 24px;">  </p>
-    
+    <p style="font-size: 24px;"> #109 - Darts </p>
+    how many unique checkouts are there in a game of darts, starting from 100 or less? <br>
+    a checkout in darts must end with a double pointer and can use no more then 3 darts. <br>
+    the thing that makes this problem hard is how unique is defined. so D2 S1 D1 != D1 S1 D2 because while made up of the same components they ended on different triples. <br>
+    on the other hand  D2 D2 D1 != D2 D1 D2 == D1 D2 D2  and S1 S3 D1 == S3 S1 D1 <br>
+    <br>
+    my idea was simple, loop thru the possible 1, 2 and 3 dart checkouts, check if they sum to n, check if they end on a double, check if has been seen before. <br>
+    the check if been seen before was the tricky part because of the strict uniqueness rules of the problem. <br>
+    after a bit of fucking about i created an Area(value, mult) class which each describe a unique area of the dartboard. I put all of these into an array and sorted based on points value. <br>
+    then when iterating thru the possible 2 and 3 dart checkouts, i did one of those progressive nested for loops (idk if they have a proper name) <br>
+    this means the combos produced in the nested for loops are guaranteed to be unique. this technique can normally be applied when doing multiple nested loops over the same set and the set is sorted. <br>
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/109 progressive for loop demo.png">
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/109 algo demo.png" title="example of algorihtm for a 2 dart checkout"> <br>
+
+    then i counted how many unique double areas that checkout had, if it only had 1 unique double then i just continued. if there were 2 double present in the checkout then there was one other solution. <br>
+    if there were 3 unique doubles, then there were 2 other solutions. you may, like me, think this is meant to be 3!, but remember only the last dart matters. <br>
+    this was more difficult then it seemed on the tin. <br>
+    pe difficulty: 45/100 <br>
+    my rating: 25/100 <br>
+    <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a>
     <br><br><br>
 </p>
 
