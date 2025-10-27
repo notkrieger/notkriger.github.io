@@ -98,8 +98,9 @@
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/109 progressive for loop demo.png" title="comparison of the search space seen by each for loop">
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/109 algo demo.png" title="example of algorithm for a 2 dart checkout"> <br>
 
-    then i counted how many unique double areas that checkout had, if it only had 1 unique double then i just continued. if there were 2 double present in the checkout then there was one other solution, as depicted in the image above, so i added 2. <br>
-    if there were 3 unique doubles, then there were 2 other solutions. you may, like me, think this is meant to be 6 (3!), but remember only the last dart matters so we only add 3. <br>
+    then i counted how many unique double areas that checkout had, if it only had 1 unique double then i just continued. <br>
+     if there were 2 double present in the checkout then there was one other solution, as depicted in the image above, so i added 2. <br>
+    if there were 3 unique doubles, then there were 2 other solutions. you may, like me, initially think this is meant to be 6 (3!), but remember only the last dart matters so we only add 3. <br>
     because only the total number of combinations was needed not the combinations themselves i neglected to create some sort of list of checkouts and just kept a running tally. <br>
     this was more difficult then it seemed on the tin. i think my solution is decent (less then a second on my old laptop :o). fortunately a dartboard only has 62 areas. <br>
     pe difficulty: 45/100 <br>
@@ -112,20 +113,24 @@
 <p>
     <p style="font-size: 24px;"> #78 - Coin Partitions </p>
     the partition function p(n) describes how many unique ways you can separate a number n into different piles. p(5) = 7 you solve these pretty quickly with pen and paper. <br>
-    p(100) = 190,569,292. the goal find the smallest n such that p(n) mod 1e6 = 0. <br>
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/78 partitions of 5.png" title="the 7 partitions of 5"> <br>
+     it becomes not so trivial quite fast, p(100) = 190,569,292. the goal find the smallest n such that p(n) mod 1e6 = 0. <br>
     <br>
-    this problem is similar to the coins sums problem, except we we are not limited to only groups of 1, 2, 5, 10, etc. and we do not know what our final value of n will be. <br>
-    so i started by adjusting the code from my solution of 31 - coin sums to account for any pile size. this worked, however is very slow due to the recalculating the same thing many times. <br>
+    this problem is similar to #31 - coins sums, except we we are not limited to only groups of 1, 2, 5, 10, etc. and we do not know what our final value of n will be. <br>
+    so i started by adjusting the code from my solution of that problem to account for any pile size. this worked, however is very slow due to the recalculating the same thing many times. <br>
     if i had only optimised my code at the time this problem would have been free. <br>
     <br>
     okay a while later. problem not free. i thought i got a decent dynamic solution (
         <a href="projecteuler/78 dynamic attempt.png" target="_blank"> dynamic attempt </a>
-    ), always gives same answer as recursive (upto like 50). <br>
-    so i run it in a while loop like fashion, gives an answer of 2301. pe says X wrong. wtf? recheck to bigger numbers with recursive, still looks good. <br>
+    ), always gives same answer as recursive (up to n=50). <br>
+    so i modify it to run in a while loop like fashion, it gives an answer of 2301. pe says X wrong. wtf? recheck to bigger numbers with recursive, still looks good. <br>
     in my confusion i go to google, all answers i see are refering to euler's pentagonal numbers and recurrence relations, nothing like my dynamic programming solution. <br>
     also i found what the real answer was. spoiler: not 2301, like 30x bigger. well i try my dp solution upto 60k, and its slow, too slow O(n²) is not enough need a linear solution. <br>
-    so i am now going to try the method i see people online do. <br>
+    as for why i was getting 2301, im not sure. hopefully if i can solve with this other method, i can compare and see what went wrong. <br>
+    so i am now going to try the method i heard of online. i think a lot of the difficulty if this problem is researching. i figured i could use similar logic to # 31, which maybe you can, but just too slow even with dynamic sol :( <br>
     <br>
+    ---
+    
 
 
     <br><br><br>    
