@@ -9,11 +9,11 @@
 </title>
 
 <li>
-    <a target="_top"> 
+    <a href="index.html"> 
         homepage </a>
 </li>
 <li>
-    <a target="_parent"> 
+    <a href="projects.html"> 
         coding shit </a>
 </li>
 
@@ -130,7 +130,7 @@
     okay a while later. problem not free. i thought i got a decent dynamic solution (
         <a href="projecteuler/78 dynamic attempt.png" target="_blank"> dynamic attempt </a>
     ), always gives same answer as recursive (up to n=50). <br>
-    so i modify it to run in a while loop like fashion, it gives an answer of 2301. pe says X wrong. wtf? recheck to bigger numbers with recursive, still looks good. <br>
+    so i modify it to run in a while loop like fashion, it gives an answer of 2301. pe says "X wrong". wtf? recheck to bigger numbers with recursive, still looks good. <br>
     in my confusion i go to google, all answers i see are refering to euler's pentagonal numbers and recurrence relations, nothing like my dynamic programming solution. <br>
     also i found what the real answer was. spoiler: not 2301, like 30x bigger. well i try my dp solution upto 60k, and its slow, too slow. O(n²) is not enough. <br>
     as for why i was getting 2301, im not sure. hopefully if i can solve with this other method, i can compare and see what went wrong. <br>
@@ -140,6 +140,8 @@
         Euler's pentagonal number thereom</a> it is not too hard to apply <br>
     this was a bit :/ for me, cos i didnt realise there would be problems in this list that require niche mathematical theorems to solve. <br> 
     so this is my implementation. i cant say i understand why this recurrence works or what pentagonal numbers have to do with it, but it works and takes like 10 seconds. <br>
+    after doing this i went back and compared to my dynamic solution, turns out the dynamic sol is the same until n=300 where the solutions are 4 apart. from there they quickly diverge even further apart. <br>
+    why this is i have no idea, i am curious tho. <br>
     <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 30/100 <br>
     my rating: 50/100*  <br>
