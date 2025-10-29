@@ -19,6 +19,7 @@
 
 <p>
     a collection of fractals i made in python <br>
+    hopefully you find this cool/learn something <br>
 </p>
 
 <p>
@@ -110,8 +111,20 @@
 
     <br><br><br>
 <p>
-    <p style="font-size: 24px;"> Lyapunov fractals </p>
-    explain and stuff. these ones are pre confusing at first.<br>
+    <p style="font-size: 24px;"> Markus-Lyapunov fractals </p>
+    to understand the Lyapunov fractal, you have to start with the iterative process beneath. <br> 
+    in this case the logistic map: x<sub>n+1</sub> = rx<sub>n</sub>(1 - x<sub>n</sub>). there has been lots of research into this and there are plenty of good youtube vids or articles on this topic. <br>
+    <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic map.png"> <br>
+    this is bifurcation diagram of the logistic map. so each blue dot represents a "stable" solution (x<sub>n</sub> for really large n) at a corresponding growth rate (r). the area r>3.5ish is a region (mostly) without stable points. <br>
+    so a good way to think about it is as a model of population. so the population starts at some number between 0 and 1. where 0 is extinct and 1 is "maximum capacity", we dont actually need to know this just imagine its normalised. <br>
+    for a generation x<sub>n</sub>, the size of the next generation is x<sub>n+1</sub> = r*x<sub>n</sub>(1-x<sub>n</sub>). <br>
+    the above diagram shows the stablising value for each r in {0, 4}. youll notice that beyond r=3 there are multiple stabilising values. <br>
+    <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic r0.5.png">
+    <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic r3.2.png">
+    <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic r3.65.png">
+    <br>
+    so the original Markus-Lyapunov fractal asked what if there were 2 r values and each generation they alternated. say 
+ 
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/lyapunovAB.png">
     <br> fucking about <br>
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/lyapunovABBBBBA.png">
