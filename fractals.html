@@ -56,11 +56,11 @@
     <br> quite nice i especially like the 10 point one in this case. i did some other stuff but nothing i had not seen elsewhere.
 
     <br><br> last thing on the chaos game, the Barnsley fern. <br>
-    <img style="max-width: 450px; max-height: 300px" src="fractalImages/attempt2 banrsley.png">
+    <img style="max-width: 600px; max-height: 400px" src="fractalImages/attempt2 banrsley.png">
+    <img style="max-width: 600px; max-height: 400px" src="fractalImages/barnely tree attemt 2.png"> <br>
     <br> i cbf explaining it here but check out the wiki, really intuitive explanation. <br> 
     with just a few tweaks, i modified it to make a tree <br>
-    <img style="max-width: 450px; max-height: 300px" src="fractalImages/barnely tree attemt 2.png"> <br>
-    i find this super interesting because i think it is somewhat representative of what happens in nature.
+    i find this super interesting because i think it is representative of what happens in nature. <br>
     its easier to store a couple equations and have the ability to build from scratch, rather then have to copy and store the entire plan every new generation. <br>
 
     
@@ -118,18 +118,20 @@
     this is bifurcation diagram of the logistic map. so each blue dot represents a "stable" solution (x<sub>n</sub> for really large n) at a corresponding growth rate (r). the area r>3.5ish is a region (mostly) without stable points. <br>
     so a good way to think about it is as a model of population. so the population starts at some number between 0 and 1. where 0 is extinct and 1 is "maximum capacity", we dont actually need to know this just imagine its normalised. <br>
     for a generation x<sub>n</sub>, the size of the next generation is x<sub>n+1</sub> = r*x<sub>n</sub>(1-x<sub>n</sub>). <br>
-    the above diagram shows the stablising value for each r in {0, 4}. youll notice that beyond r=3 there are multiple stabilising values. <br>
+    the above diagram shows the stablising value for each r in {0, 4}. youll notice that 3ish < r < 3.55ish there are multiple stabilising values and beyond that it is seemingly random (chaotic). <br>
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic r0.5.png">
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic r3.2.png">
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/logistic r3.65.png">
     <br>
-    so the original Markus-Lyapunov fractal asked what if there were 2 r values and each generation they alternated. say 
- 
-    <img style="max-width: 450px; max-height: 300px" src="fractalImages/lyapunovAB.png">
-    <br> fucking about <br>
+    so what if you alternated between 2 r values a and b at each generation? well you will again result in a system which is either stable or chaotic and this can be described by the Lyapunov exponent. <br>
+    the Lyapunov exponent is effectively a measure of "how chaotic" a system is, so a negative exponent means stability and a positive exponent represent chaos. <br>
+    if you calculate this value for every pair 0 < a, b < 4, and plot you get the Markus-Lyapunov fractal. <br>
+    <img style="max-width: 600px; max-height: 400px" src="fractalImages/lyapunovAB04.png">
+    <img style="max-width: 600px; max-height: 400px" src="fractalImages/lyapunovAB24.png"><br>
+    rather then just alternating suppose you used a or b depending on some sequence, eg. <a href="projecteuler/ABBBAAABA.png" target="_blank"> ABBBAAABA </a> <br>. well this will give a new Lyapunov fractal. <br>
+    and then finally you can you different iterative equation other then the logistic map. this being said the most interesting area is normally in the top right area of the board. so my pictures may focus around that area. <br>
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/lyapunovABBBBBA.png">
     <img style="max-width: 450px; max-height: 300px" src="fractalImages/lyapunovBBAABBA.png"> <br>
-    <br> animate? 
     <br><br><br>
 
     
