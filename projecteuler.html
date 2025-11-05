@@ -144,7 +144,31 @@
     why this is i have no idea, i am curious tho. <br>
     <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 30/100 <br>
-    my rating: 30/100*  <br>
+    my rating: 20/100*  <br>
+    <br><br><br>    
+
+</p>
+
+<p>
+    <p style="font-size: 24px;"> #144 - Laser Beam Reflections </p>
+    given the ellipse 4x<sup>2</sup> + y<sup>2</sup> = 100, a laser placed at (0, 10.1) shines a beam on the point (1.4, -9.6). the beam then reflects around the ellipse using the standard laws of reflection. <br>
+    there is an opening in the ellipse between -0.01 < x < 0.01 on the y>0 side of the ellipse, where the beam can exit the ellipse. how many reflections does it take before it leaves the ellipse? <br>
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/144 problem example.png"> <br>
+    so immediately i realised this problem required to follow a small set of instructions until the exit is found: <br>
+    1. find slope of line of the laser (this is easily solved for the first iteration) <br>
+    2. find point at which it intersects ellipse (there will be 2 solutions but the beam will have started at one of them so pick the other) <br>
+    3. find the tangent slope at that point (given by -4x/y for this ellipse, given in the problem) <br>
+    4. find normal to tangent at that point (-1/m) <br>
+    5. find slope of next line from the information gathered in last 4 steps <br>
+    6. repeat steps 1-5 until new intersection with ellipse is between -0.01 < x < 0.01 and y>0 <br>
+    <br>
+    initially i tried to algebra out everything myself, but i got stuck on step 5. luckily <a href="https://stackoverflow.com/questions/17395860/how-to-reflect-a-line-over-another-line" target="_blank">
+        this stackexchange post</a> provided a neat solution for the new line, in terms which i had already calculated. <br>
+    from there it was just looping through until the solution was found. <br>
+    <a href="projecteuler/144 solution.png" target="_blank"> show solution </a> <br>
+    pe difficulty: 50/100 <br>
+    my rating: 20/100  <br>
+    
     <br><br><br>    
 
 </p>
