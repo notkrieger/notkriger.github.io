@@ -192,3 +192,17 @@
     <a href="projecteuler/86 shit solution.png" target="_blank"> show hack solution </a> <br>
     <br><br><br>    
 </p>
+
+<p>
+    <p style="font-size: 24px;"> #102 - Triangle Containment </p>
+    you are given a list of 1000 triangles described using there vertices. return how many of them contain the origin. <br>
+    so the first thing i did was construct 3 vectors from each vertice to the origin. initially i thought of summing them and then somehow using that resulting vector to do something. <br>
+    i could not figure out where this strategy was going, but i realised that the angles between these vectors will sum to 360 degrees (2pi rad) iff the origin is inside the triangle. <br>
+    from there it was simple, just calculate the vectors, apply cosine rule to each pair of vectors, sum the 3 resultant angles, check if equal to 2 pi. <br>
+    just remember to account for floating point errors by rounding the sum of angles and 2 pi in the comparison. <br>
+    this one was pretty easy and didnt take long, but i am quite satisfied with my solution. :) <br>
+
+    pe difficulty: 15/100 <br>
+    <a href="projecteuler/102 solution.png" target="_blank"> show solution </a> <br>
+    <br><br><br>    
+</p>
