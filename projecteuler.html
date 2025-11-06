@@ -20,7 +20,7 @@
 <p>
     some of my methods for solving some project euler problems i found interesting/challenging. <br>
     spoilers ahead if you want to try for yourself do not look at solutions. <br>
-    solutions will most likely be in python. <br>
+    solutions will probably be in python. <br>
     it is very unlikely these are optimals solutions. <br><br>
 
 </p>
@@ -40,8 +40,9 @@
     to stop double counting is to make sure the coins picked in descending order. so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
     this ensures that all solutions which reach the target are unique. and therefore a simple recursive solution is applicable. <br>
     since target and coin set were not very big i didnt bother trying to optimise anymore. i know this is a slow solution, lots of redundant calculations. <br>
-    <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a> <br>
     pe difficulty: 5/100<br>
+    <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a> <br>
+    
 
     <br><br><br>    
 
@@ -61,8 +62,9 @@
     now all i needed to do was define an iterative process which checks all outer and inner N's until num_cells exceeded 1 million. <br>
     the first thing i thought of was iterating thru "edge thickness" and outerN in a nested while loop. this way innerN = outerN - edgeThickness at each step. <br> 
     i found this problem easier then expected and i think this is a pretty efficient method. <br>
-    <a href="projecteuler/limanae squares finished attempt.png" target="_blank"> show solution </a> <br>
     pe difficulty: 30/100<br>
+    <a href="projecteuler/limanae squares finished attempt.png" target="_blank"> show solution </a> <br>
+    
 
     <br><br><br>
 </p>
@@ -78,8 +80,9 @@
     because of the way the algorithm works in the previous problem it is guaranteed to generate all hollow squares using less then 1 mil cells without duplicates. <br>
     once the array is generated i just wrote a small function to count how many elements in the array equal some target value. <br>
     then sum that from 1 - 10. dont be like me i spent like 10 minutes getting it wrong because i was looping from 0 - 10 instead :( <br>
-    <a href="projecteuler/limanae squares 2 finished attempt.png" target="_blank"> show solution </a> <br>
     pe difficulty: 40/100<br>
+    <a href="projecteuler/limanae squares 2 finished attempt.png" target="_blank"> show solution </a> <br>
+    
     
     <br><br><br>
 </p>
@@ -109,8 +112,9 @@
     this was more difficult then it seemed on the tin. the difficultly mainly comes from working around the rules for what is and is not a unique checkout. <br>
     fortunately a dartboard only has 62 areas cos my algorithm is O(a³) where a is the number of areas on a dartboard. <br>
     i think my solution is decent (less then a second on my laptop :o) but would be interesting to see what the best way to solve if problem was larger; more darts, more areas, etc.  <br>
-    <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 45/100 <br>
+    <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a> <br>
+    
     <br><br><br>
 </p>
 
@@ -141,8 +145,9 @@
     so this is my implementation. i cant say i understand why this recurrence works or what pentagonal numbers have to do with it, but it works and takes like 10 seconds. <br>
     after doing this i went back and compared to my dynamic solution, turns out the dynamic sol is the same until n=300 where the solutions are 4 apart. from there they quickly diverge even further apart. <br>
     why this is i have no idea, i am curious tho. <br>
-    <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 30/100 <br>
+    <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
+    
     <br><br><br>    
 
 </p>
@@ -163,8 +168,8 @@
     initially i tried to algebra out everything myself, but i got stuck on step 5. luckily <a href="https://stackoverflow.com/questions/17395860/how-to-reflect-a-line-over-another-line" target="_blank">
         this stackexchange post</a> provided a neat solution for the new line, in terms which i had already calculated. <br>
     from there it was just looping through until the solution was found. <br>
-    <a href="projecteuler/144 solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 50/100 <br>
+    <a href="projecteuler/144 solution.png" target="_blank"> show solution </a> <br>
     <br><br><br>    
 
 </p>
@@ -179,10 +184,10 @@
     the shortest distance (s) between opposite corners (A --> B) can be solved using pytagorus thereom: s<sup>2</sup> = i<sup>2</sup> + (j+k)<sup>2</sup>. <br>
     so i quickly reached this point and created a brute force algorithm which worked correctly. this was too slow tho because it recalced all solutions for all m < M every time M increased. <br>
     i fugured shifting this solution to a dynamic one would be very simple. but like 40 min later i was still struggling and was getting annoyed. <br>
-    so i wrote a shitty binary search algorithm to accompany the brute force solution. this works but im not that happy with it. <br>
-    <a href="projecteuler/86 shit solution.png" target="_blank"> show solution </a> <br>
+    so i wrote a binary search algorithm to accompany the brute force solution to create my hack solution. this works but still not that fast (even with njit) and im not satisfied by it. <br>
     if i remember/can be bothered i will return and make this an elegant solution. <br>
     pe difficulty: 35/100 <br>
+    <a href="projecteuler/86 shit solution.png" target="_blank"> show hack solution </a> <br>
     <br><br><br>    
 
 </p>
