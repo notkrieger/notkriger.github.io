@@ -20,6 +20,7 @@
 <p>
     some of my methods for solving some project euler problems i found interesting/challenging. <br>
     spoilers ahead if you want to try for yourself do not look at solutions. <br>
+    solutions will most likely be in python. <br>
     it is very unlikely these are optimals solutions. <br><br>
 
 </p>
@@ -39,16 +40,16 @@
     to stop double counting is to make sure the coins picked in descending order. so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
     this ensures that all solutions which reach the target are unique. and therefore a simple recursive solution is applicable. <br>
     since target and coin set were not very big i didnt bother trying to optimise anymore. i know this is a slow solution, lots of redundant calculations. <br>
+    <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a> <br>
     pe difficulty: 5/100<br>
-    my rating: 10/100 <br>
-    <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a>
+
     <br><br><br>    
 
 </p>
 
 <p>
     <p style="font-size: 24px;"> #173 - Hollow Square Laminae I </p>
-    how many hollow squares (see image below) can you construct using a million blocks? <br>
+    how many hollow squares (see image below) can you construct using up to a million blocks? <br>
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/limame squares example.png">
     <br>
     my first step was to draw a few little hollow squares to look for patterns. <br>
@@ -60,9 +61,9 @@
     now all i needed to do was define an iterative process which checks all outer and inner N's until num_cells exceeded 1 million. <br>
     the first thing i thought of was iterating thru "edge thickness" and outerN in a nested while loop. this way innerN = outerN - edgeThickness at each step. <br> 
     i found this problem easier then expected and i think this is a pretty efficient method. <br>
+    <a href="projecteuler/limanae squares finished attempt.png" target="_blank"> show solution </a> <br>
     pe difficulty: 30/100<br>
-    my rating: 12/100 <br>
-    <a href="projecteuler/limanae squares finished attempt.png" target="_blank"> show solution </a>
+
     <br><br><br>
 </p>
 
@@ -77,10 +78,9 @@
     because of the way the algorithm works in the previous problem it is guaranteed to generate all hollow squares using less then 1 mil cells without duplicates. <br>
     once the array is generated i just wrote a small function to count how many elements in the array equal some target value. <br>
     then sum that from 1 - 10. dont be like me i spent like 10 minutes getting it wrong because i was looping from 0 - 10 instead :( <br>
-
+    <a href="projecteuler/limanae squares 2 finished attempt.png" target="_blank"> show solution </a> <br>
     pe difficulty: 40/100<br>
-    my rating: 15/100 <br>
-    <a href="projecteuler/limanae squares 2 finished attempt.png" target="_blank"> show solution </a>
+    
     <br><br><br>
 </p>
 
@@ -109,9 +109,8 @@
     this was more difficult then it seemed on the tin. the difficultly mainly comes from working around the rules for what is and is not a unique checkout. <br>
     fortunately a dartboard only has 62 areas cos my algorithm is O(a³) where a is the number of areas on a dartboard. <br>
     i think my solution is decent (less then a second on my laptop :o) but would be interesting to see what the best way to solve if problem was larger; more darts, more areas, etc.  <br>
+    <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 45/100 <br>
-    my rating: 30/100 <br>
-    <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a>
     <br><br><br>
 </p>
 
@@ -144,7 +143,6 @@
     why this is i have no idea, i am curious tho. <br>
     <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 30/100 <br>
-    my rating: 20/100*  <br>
     <br><br><br>    
 
 </p>
@@ -155,20 +153,36 @@
     there is an opening in the ellipse between -0.01 < x < 0.01 on the y>0 side of the ellipse, where the beam can exit the ellipse. how many reflections does it take before it leaves the ellipse? <br>
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/144 problem example.png"> <br>
     so immediately i realised this problem required to follow a small set of instructions until the exit is found: <br>
-    1. find slope of line of the laser (this is easily solved for the first iteration) <br>
+    1. find slope of line of the laser (effectively given for the first, easily solveable for all subsequent) <br>
     2. find point at which it intersects ellipse (there will be 2 solutions but the beam will have started at one of them so pick the other) <br>
     3. find the tangent slope at that point (given by -4x/y for this ellipse, given in the problem) <br>
-    4. find normal to tangent at that point (-1/m) <br>
+    4. find normal to tangent at that point (-1/m, where m is slope of tangent line) <br>
     5. find slope of next line from the information gathered in last 4 steps <br>
-    6. repeat steps 1-5 until new intersection with ellipse is between -0.01 < x < 0.01 and y>0 <br>
+    6. repeat steps 1-5 until new intersection with ellipse is between -0.01 < x < 0.01 and y > 0 <br>
     <br>
     initially i tried to algebra out everything myself, but i got stuck on step 5. luckily <a href="https://stackoverflow.com/questions/17395860/how-to-reflect-a-line-over-another-line" target="_blank">
         this stackexchange post</a> provided a neat solution for the new line, in terms which i had already calculated. <br>
     from there it was just looping through until the solution was found. <br>
     <a href="projecteuler/144 solution.png" target="_blank"> show solution </a> <br>
     pe difficulty: 50/100 <br>
-    my rating: 20/100  <br>
-    
+    <br><br><br>    
+
+</p>
+
+<p>
+    <p style="font-size: 24px;"> #86 - Cuboid Route </p>
+    A spider is in a box with integer side lengths i,j,k. Starting in a corner it travels to the opposite corner on the shortest path. <br>
+    given a box with a maximum side length M, call f(M) the number of boxes whose shortest path is an integer. find the smalled value of M s.t. f(M) is > 1,000,000.<br>
+    <br>
+    my first thoughts were how to solve the shortest path. if you "unravel" a rectangular prism to its net. <br>
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/86 example.png"> <br>
+    the shortest distance (s) between opposite corners (A --> B) can be solved using pytagorus thereom: s<sup>2</sup> = i<sup>2</sup> + (j+k)<sup>2</sup>. <br>
+    so i quickly reached this point and created a brute force algorithm which worked correctly. this was too slow tho because it recalced all solutions for all m < M every time M increased. <br>
+    i fugured shifting this solution to a dynamic one would be very simple. but like 40 min later i was still struggling and was getting annoyed. <br>
+    so i wrote a shitty binary search algorithm to accompany the brute force solution. this works but im not that happy with it. <br>
+    <a href="projecteuler/86 shit solution.png" target="_blank"> show solution </a> <br>
+    if i remember/can be bothered i will return and make this an elegant solution. <br>
+    pe difficulty: 35/100 <br>
     <br><br><br>    
 
 </p>
