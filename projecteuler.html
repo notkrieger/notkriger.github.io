@@ -21,8 +21,8 @@
     some of my methods for solving some project euler problems i found interesting/challenging. <br>
     spoilers ahead if you want to try for yourself do not look at solutions. <br>
     solutions will probably be in python. <br>
-    it is very unlikely these are optimals solutions. <br><br>
-    solved: 31, 173, 174, 109, 78, 144, 86 <br>
+    it is very unlikely these are optimals solutions. <br>
+    solved: 31, 78, 173, 174, 109, 144, 86 <br><br>
 
 </p>
 
@@ -38,9 +38,9 @@
     unfortunately this double counts many solutions i.e. one solution to p(4) is (2, 1, 1) and a solution to p(5) is (2, 2, 1) <br>
     the method described above would get (2, 1, 1, 2) as a solution to p(6) twice. (2, 1, 1) + (2) and (2, 2, 1) + (1)<br>
     <br> 
-    to stop double counting is to make sure the coins picked in descending order. so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
+    to stop double counting, make sure the coins picked in descending order. so if a coin c is picked, then no coin greater then c can be picked until the target is reached. <br>
     this ensures that all solutions which reach the target are unique. and therefore a simple recursive solution is applicable. <br>
-    since target and coin set were not very big i didnt bother trying to optimise anymore. i know this is a slow solution, lots of redundant calculations. <br>
+    since target and coin set were not very big i didnt bother trying to optimise anymore. i know this is a slow solution, lots of redundant calculations. better solution applied to next problem. <br>
     pe difficulty: 5/100<br>
     <a href="projecteuler/coinsums attempt 2.png" target="_blank"> show solution </a> <br>
     
@@ -48,6 +48,40 @@
     <br><br><br>    
 
 </p>
+
+<p>
+    <p style="font-size: 24px;"> #78 - Coin Partitions </p>
+    the partition function p(n) describes how many unique ways you can separate a number n into different piles. p(5) = 7 you solve these pretty quickly with pen and paper. <br>
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/78 partitions of 5.png" title="the 7 partitions of 5"> <br>
+    it becomes not so trivial quite fast, p(100) = 190,569,292*. the goal of this problem is to find the smallest n such that p(n) mod 1e6 = 0. <br>
+    *turns out this is its own pe problem(#76 - Counting Summations), my dynamic sol gets this correct very quickly. <br>
+    <br>
+    this problem is similar to #31 - coins sums, except we we are not limited to only groups of 1, 2, 5, 10, etc. and we do not know what our final value of n will be. <br>
+    so i started by adjusting the code from my solution of that problem to account for any pile size. this worked, however is very slow due to the recalculating the same thing many times. <br>
+    if i had only optimised my code at the time this problem would have been free. <br>
+    <br>
+    okay a while later. problem not free. i thought i got a decent dynamic solution (
+        <a href="projecteuler/78 dynamic attempt.png" target="_blank"> dynamic attempt </a>
+    ), always gives same answer as recursive (up to n=50). <br>
+    so i modify it to run in a while loop like fashion, it gives an answer of 2301. pe says "X wrong". wtf? recheck to bigger numbers with recursive, still looks good. <br>
+    in my confusion i go to google, all answers i see are refering to euler's pentagonal numbers and recurrence relations, nothing like my dynamic programming solution. <br>
+    also i found what the real answer was. spoiler: not 2301, like 30x bigger. well i try my dp solution upto 60k, and its slow, too slow. O(n²) is not enough. <br>
+    as for why i was getting 2301, im not sure. hopefully if i can solve with this other method, i can compare and see what went wrong. <br>
+    i figured i could use similar logic to # 31, which maybe you can, but just too slow even with dynamic sol :(. so i am now going to try the method i read about online.  <br>
+    <br>
+    i think a lot of the difficulty if this problem is researching, once you find <a href="https://en.wikipedia.org/wiki/Pentagonal_number_theorem" target="_blank">
+        Euler's pentagonal number thereom</a> it is not too hard to apply <br>
+    this was a bit :/ for me, cos i didnt realise there would be problems in this list that require niche mathematical theorems to solve. <br> 
+    so this is my implementation. i cant say i understand why this recurrence works or what pentagonal numbers have to do with it, but it works and takes like 10 seconds. <br>
+    after doing this i went back and compared to my dynamic solution, turns out the dynamic sol is the same until n=300 where the solutions are 4 apart. from there they quickly diverge even further apart. <br>
+    why this is i have no idea, i am curious tho. <br>
+    pe difficulty: 30/100 <br>
+    <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
+    
+    <br><br><br>    
+
+</p>
+
 
 <p>
     <p style="font-size: 24px;"> #173 - Hollow Square Laminae I </p>
@@ -119,39 +153,6 @@
     <br><br><br>
 </p>
 
-
-<p>
-    <p style="font-size: 24px;"> #78 - Coin Partitions </p>
-    the partition function p(n) describes how many unique ways you can separate a number n into different piles. p(5) = 7 you solve these pretty quickly with pen and paper. <br>
-    <img style="max-width: 400px; max-height: 300px" src="projecteuler/78 partitions of 5.png" title="the 7 partitions of 5"> <br>
-    it becomes not so trivial quite fast, p(100) = 190,569,292*. the goal of this problem is to find the smallest n such that p(n) mod 1e6 = 0. <br>
-    *turns out this is its own pe problem(#76 - Counting Summations), my dynamic sol gets this correct very quickly. <br>
-    <br>
-    this problem is similar to #31 - coins sums, except we we are not limited to only groups of 1, 2, 5, 10, etc. and we do not know what our final value of n will be. <br>
-    so i started by adjusting the code from my solution of that problem to account for any pile size. this worked, however is very slow due to the recalculating the same thing many times. <br>
-    if i had only optimised my code at the time this problem would have been free. <br>
-    <br>
-    okay a while later. problem not free. i thought i got a decent dynamic solution (
-        <a href="projecteuler/78 dynamic attempt.png" target="_blank"> dynamic attempt </a>
-    ), always gives same answer as recursive (up to n=50). <br>
-    so i modify it to run in a while loop like fashion, it gives an answer of 2301. pe says "X wrong". wtf? recheck to bigger numbers with recursive, still looks good. <br>
-    in my confusion i go to google, all answers i see are refering to euler's pentagonal numbers and recurrence relations, nothing like my dynamic programming solution. <br>
-    also i found what the real answer was. spoiler: not 2301, like 30x bigger. well i try my dp solution upto 60k, and its slow, too slow. O(n²) is not enough. <br>
-    as for why i was getting 2301, im not sure. hopefully if i can solve with this other method, i can compare and see what went wrong. <br>
-    i figured i could use similar logic to # 31, which maybe you can, but just too slow even with dynamic sol :(. so i am now going to try the method i read about online.  <br>
-    <br>
-    i think a lot of the difficulty if this problem is researching, once you find <a href="https://en.wikipedia.org/wiki/Pentagonal_number_theorem" target="_blank">
-        Euler's pentagonal number thereom</a> it is not too hard to apply <br>
-    this was a bit :/ for me, cos i didnt realise there would be problems in this list that require niche mathematical theorems to solve. <br> 
-    so this is my implementation. i cant say i understand why this recurrence works or what pentagonal numbers have to do with it, but it works and takes like 10 seconds. <br>
-    after doing this i went back and compared to my dynamic solution, turns out the dynamic sol is the same until n=300 where the solutions are 4 apart. from there they quickly diverge even further apart. <br>
-    why this is i have no idea, i am curious tho. <br>
-    pe difficulty: 30/100 <br>
-    <a href="projecteuler/78 solution.png" target="_blank"> show solution </a> <br>
-    
-    <br><br><br>    
-
-</p>
 
 <p>
     <p style="font-size: 24px;"> #144 - Laser Beam Reflections </p>
