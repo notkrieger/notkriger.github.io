@@ -69,17 +69,17 @@
     my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in seeming randomness. <br>
     i looped through the positive numbers in binary and converted those to RL strings, then ran the ant >2.5 million steps. here are a bunch of my results. <br> 
     <img style="max-width: 450px; max-height: 300px" src="ant/42.jpeg" title="RLRLRL, 2-state-like">
-    <img style="max-width: 450px; max-height: 300px" src="ant/141.jpeg" title="RLLLRRLR"> <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/298.jpeg" title="RLLRLRLRL, seeming randomness with small areas of order">
-    <img style="max-width: 450px; max-height: 300px" src="ant/384.jpeg" title="RRLLLLLLL, this ones just fucken sick"> <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/141.jpeg" title="RLLLRRLR"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/298.jpeg" title="RLLRLRLRL, seeming randomness with small areas of order"> <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/384.jpeg" title="RRLLLLLLL, this ones just fucken sick"> 
     <img style="max-width: 450px; max-height: 300px" src="ant/98.jpeg" title="RRLLLRL"> 
     <img style="max-width: 450px; max-height: 300px" src="ant/410.jpeg" title="RRLLRRLRL, first highway i found"> <br>
     so as far as i can see the ants form 4 general patterns. <br>
     1. 2-state-like patterns, these generally occur with a rule like "RLRLRL" (top left) <br>
     2. hexagonal patterns. not sure what makes these to occur but they come in 2 forms: <br>
-    2a. layered hexagon pattern (middle right) <br>
-    2b. random hexagon (top right), these do seem to have layers when being constructed but also get removed and replaced w randomness in construction. <br>
-    3. fully random patterns, no obvious shape. these are by far the most frequent. generally completely random (bottom left), occasionally have some order like middle left. <br>
+    2a. layered hexagon pattern (bottom left) <br>
+    2b. random hexagon (top middle), these do seem to have layers when being constructed but also get removed and replaced w randomness in construction. <br>
+    3. fully random patterns, no obvious shape. these are by far the most frequent. generally completely random (bottom middle), occasionally have some order like middle left. <br>
     4. highway/stable patterns (bottom right), this is the only one i found so far :) <br>
 
     <br>
