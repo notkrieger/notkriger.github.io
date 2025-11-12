@@ -20,7 +20,7 @@
 <p>
     I have always found cellular automata cool, from wolframs elementary ca to conways game of life. <br>
     here is a small exploration of langtons ant. <br>
-    last updated: 11/11/25<br>
+    last updated: 12/11/25<br>
 </p>
 
 <p>
@@ -37,7 +37,7 @@
     <video autoplay loop muted width="600" height="400" src="ant/4 colour ant.mp4"></video>
     <video autoplay loop muted width="600" height="400" src="ant/5 colour ant.mp4"></video><br>
     <br>
-    these first few are made using matplotlib os the colours are harder to customise, so i will look to do the rest in pygame. <br>
+    these first few are made using matplotlib so the colours are harder to customise, so i will look to do the rest in pygame. <br>
     i have seen videos online where people have found awesome patterns just by modifying the number of colours and the rules. <a href="https://www.youtube.com/watch?v=H7HhZUeKppk" target="_blank"> this video</a> shows some awesome ones with 16 rules. <br>
     other modifications i have seen are multiple ants at once and a 3d version, which both make the system much more complicated. <br>
     <br> <br>
@@ -66,20 +66,30 @@
 
     moving on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL" (or in my case above "LR"). <br>
     so for some string S of L's and R's, for any cell state i, the ant changes it the state (i+1)%N, where N is the length of the string S. this allows for easier testing of more complicated rules. <br>
-    my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in chaos. <br>
-    i looped through the positive numbers in binary and converted those to RL strings, then ran the ant >1 million steps. here are a bunch of my results. <br> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/42.jpeg" title="RLRLRL">
+    my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in seeming randomness. <br>
+    i looped through the positive numbers in binary and converted those to RL strings, then ran the ant >2.5 million steps. here are a bunch of my results. <br> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/42.jpeg" title="RLRLRL, 2-state-like">
     <img style="max-width: 450px; max-height: 300px" src="ant/141.jpeg" title="RLLLRRLR"> <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/298.jpeg" title="RLLRLRLRL">
-    <img style="max-width: 450px; max-height: 300px" src="ant/384.jpeg" title="RRLLLLLLL"> <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/298.jpeg" title="RLLRLRLRL, seeming randomness with small areas of order">
+    <img style="max-width: 450px; max-height: 300px" src="ant/384.jpeg" title="RRLLLLLLL, this ones just fucken sick"> <br>
     <img style="max-width: 450px; max-height: 300px" src="ant/98.jpeg" title="RRLLLRL"> 
     <img style="max-width: 450px; max-height: 300px" src="ant/410.jpeg" title="RRLLRRLRL, first highway i found"> <br>
     so as far as i can see the ants form 4 general patterns. <br>
     1. 2-state-like patterns, these generally occur with a rule like "RLRLRL" (top left) <br>
     2. hexagonal patterns. not sure what makes these to occur but they come in 2 forms: <br>
-    2a. random hexagon (top right) <br>
-    2b. layered hexagon pattern (middle right) <br>
+    2a. layered hexagon pattern (middle right) <br>
+    2b. random hexagon (top right), these do seem to have layers when being constructed but also get removed and replaced w randomness in construction. <br>
     3. fully random patterns, no obvious shape. these are by far the most frequent. generally completely random (bottom left), occasionally have some order like middle left. <br>
     4. highway/stable patterns (bottom right), this is the only one i found so far :) <br>
+
+    <br>
+    the apparent order in the random patterns could arise because of when the program was stopped. perhaps running another 1000 steps wouldve changed it to randomness. <br>
+    of course by this same token of thought, there could be many highways which occur with simpler rules but require >10 million steps to begin. <br>
+    overall im pre satisfied with what i produced here. im gonna keep running the ants perhaps upto 1024 or even 2048 i will just see. <br>
+    <br>
+    in the future  i might make a hexagonal grid ant. this would be the last of the regular n-gons which can tile the plane. <br>
+    since the actual shape of the tile doesnt matter i could also look into pentagonal tilings which use identical irregular n-gons. <br>
+    it will get a bit more difficult beyond hexagons because i don think you can tile the plane with an n-gon where n>6. <br>
+
     
 </p>
