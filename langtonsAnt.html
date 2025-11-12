@@ -61,13 +61,25 @@
     <video autoplay loop muted width="600" height="400" src="ant/triangle periodic bondaries sped up.mp4 "></video><br> 
     ok wtf i ran this for 250 mil steps, there are multiple times in the simulation where a clear asymmetry is created. and yet the overall pattern stays so solid. even to the point these asymmetries get repaired. <br>
     the central chaos cluster appears to grow and shrink after the border has been reached. will this cluster eventually consume the entire grid? instinctually, i immediately think yes, it must, but this trianglular ant has made me wonder. <br>
-    this work (without any real quantative analysis or proof) has led me to believe that the 2-state langton ant on a non-periodic triangular grid will never form a highway. <br><br>
+    this work (without any real quantative analysis or proof) has led me to theorise that the 2-state langton ant on a non-periodic triangular grid will never form a highway. <br><br>
 
 
     moving on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL" (or in my case above "LR"). <br>
     so for some string S of L's and R's, for any cell state i, the ant changes it the state (i+1)%N, where N is the length of the string S. this allows for easier testing of more complicated rules. <br>
     my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in chaos. <br>
-    i looped through the positive numbers in binary and converted those to RL strings. here are a bunch of my results. <br> 
-    
+    i looped through the positive numbers in binary and converted those to RL strings, then ran the ant >1 million steps. here are a bunch of my results. <br> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/42.jpeg" title="RLRLRL">
+    <img style="max-width: 450px; max-height: 300px" src="ant/141.jpeg" title="RLLLRRLR"> <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/298.jpeg" title="RLLRLRLRL">
+    <img style="max-width: 450px; max-height: 300px" src="ant/384.jpeg" title="RRLLLLLLL"> <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/98.jpeg" title="RRLLLRL"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/410.jpeg" title="RRLLRRLRL, first highway i found"> <br>
+    so as far as i can see the ants form 4 general patterns. <br>
+    1. 2-state-like patterns, these generally occur with a rule like "RLRLRL" (top left) <br>
+    2. hexagonal patterns. not sure what makes these to occur but they come in 2 forms: <br>
+    2a. random hexagon (top right) <br>
+    2b. layered hexagon pattern (middle right) <br>
+    3. fully random patterns, no obvious shape. these are by far the most frequent. generally completely random (bottom left), occasionally have some order like middle left. <br>
+    4. highway/stable patterns (bottom right), this is the only one i found so far :) <br>
     
 </p>
