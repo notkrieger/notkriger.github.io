@@ -28,7 +28,7 @@
     The original Langtons ant is a simple 2d cellular automata where the grid can be colour 0 or 1 and the ant (the only active thing) follows these 2 rules: <br>
     if the current cell is 0, change it to 1, rotate (-)90 degrees left and move forward.  <br>
     if the current cell is 1, change it to 0, rotate (+)90 degrees right and move forward. <br>
-    This is the first 11,500 steps the ant will take. After 11,000ish it begins to forming a repeating pattern which will continue indefintely. <br>
+    This is the first 11,500 steps the ant will take. After 11,000ish it begins to forming a repeating pattern (or a highway) which will continue indefintely. <br>
     <video autoplay loop muted width="800" height="600" src="ca/square grid langtons ant, 11500 steps.mp4"></video><br>
     <br>
     it is not hard to make variations to Langtons Ant by adding more options for cell values (more colours) and more rules. <br>
@@ -36,15 +36,15 @@
     <video autoplay loop muted width="600" height="400" src="ca/4 colour ant exmaple1.mp4"></video>
     <video autoplay loop muted width="600" height="400" src="ca/5 colour ant exmaple2.mp4"></video><br>
     <br>
-    i have seen videos online where people have found awesome patterns just by modifying the number of colours and the rules. <br>
+    i have seen videos online where people have found awesome patterns just by modifying the number of colours and the rules. <a href="https://www.youtube.com/watch?v=H7HhZUeKppk"> this video </a>shows some awesome one with 16 rules. <br>
     other modifications i have seen are multiple ants at once and a 3d version, which both make the system much more complicated. <br>
     <br>
     i tried something i had not seen before and converted to grid made up of equilateral triangles. this was fun to code up, i used pygame. <br>
-    <video autoplay loop muted width="600" height="400" src="ca/2 state triangle ant 50x.mp4"></video>
-    <video autoplay loop muted width="600" height="400" src="ca/3 state triangle ant 50x.mp4"></video><br>
-    below are the standard 2-colour and 3 colour ants on a triangular grid. the 2-colour ant was suprising, i was expecting a cycle to form like the square grid but after 250 million steps it still didnt happen. <br>
+    <video autoplay loop muted width="600" height="400" src="ca/2 state triangle ant 50x.mp4" title="250 million steps but my mouse didnt move :("></video>
+    <video autoplay loop muted width="600" height="400" src="ca/3 state triangle ant 50x.mp4" title="3 state ant, nearly 3 billion steps"></video><br>
+    above are the standard 2-colour (left) and a 3-colour (right) ants on a triangular grid. the 2-colour ant was suprising, i was expecting a cycle to form like the square grid but after 250 million steps it still didnt happen. <br>
     the shape looks extremely symmetrical, a few differences can be seen in the centre chaotic cluster, and near the "axis of symmetry". because of these slight differences i thought it would eventually become asymmetric but again i didnt see that happen. <br>
-    perhaps it would be faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. food for thought. <br>
     i am going to run a similar program without the animation that tracks some number like the rate of change of the proportion of white to black and see if it stabilises after some massive number. <br>
+    perhaps it would be faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. food for thought. <br>
     
 </p>
