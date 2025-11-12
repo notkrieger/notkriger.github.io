@@ -28,29 +28,46 @@
     The original Langtons ant is a simple 2d cellular automata where the grid can be colour 0 or 1 and the ant (the only active thing) follows these 2 rules: <br>
     if the current cell is 0, change it to 1, rotate (-)90 degrees left and move forward.  <br>
     if the current cell is 1, change it to 0, rotate (+)90 degrees right and move forward. <br>
-    This is the first 11,500 steps the ant will take. After 11,000ish it begins to forming a repeating pattern (or a highway) which will continue indefintely. I realise now i mixed my left an rights up so this is upside down :). <br>
-    <video autoplay loop muted width="800" height="600" src="ca/original langton ant.mp4"></video><br>
+    This is the first 11,500 steps the ant will take. After 11,000ish it begins to forming a repeating pattern (or a highway) which will continue indefintely. I realise now i mixed my left and rights up so this is "upside down" :). <br>
+    <video autoplay loop muted width="800" height="600" src="ant/original langton ant.mp4"></video><br>
     <br>
 
     it is not hard to make variations to Langtons Ant by adding more options for cell values (more colours) and more rules. <br>
     on the left I have the rules: {0-->1,+90, 1-->3,+90, 2-->0,-90, 3-->2,-90} and on the right: {0-->3,+90, 1-->0,+90, 2-->1,-90, 3-->4,-90,4-->2,+90}. <br>
-    <video autoplay loop muted width="600" height="400" src="ca/4 colour ant.mp4"></video>
-    <video autoplay loop muted width="600" height="400" src="ca/5 colour ant.mp4"></video><br>
+    <video autoplay loop muted width="600" height="400" src="ant/4 colour ant.mp4"></video>
+    <video autoplay loop muted width="600" height="400" src="ant/5 colour ant.mp4"></video><br>
     <br>
-        these first few are made using matplotlib but the colours are harder to customise, so i will look to do th rest in pygame. <br>
+    these first few are made using matplotlib os the colours are harder to customise, so i will look to do the rest in pygame. <br>
     i have seen videos online where people have found awesome patterns just by modifying the number of colours and the rules. <a href="https://www.youtube.com/watch?v=H7HhZUeKppk" target="_blank"> this video</a> shows some awesome ones with 16 rules. <br>
     other modifications i have seen are multiple ants at once and a 3d version, which both make the system much more complicated. <br>
-    <br>
-    i tried something i had not seen before and converted to grid made up of equilateral triangles. this was fun to code up. <br>
-    i also made the grpahics better, so grey cells are untouched cells but for the ant they are treated as white cells. <br>
-    <video autoplay loop muted width="600" height="400" src="ca/2 state triangle zoomed.mp4" title="how it started"></video>
-    <video autoplay loop muted width="600" height="400" src="ca/2 state triangle 16x.mp4" title="how its goin (first 60 million steps)"></video> <br>
+    <br> <br>
+    i tried something i had not seen before and converted to grid made up of equilateral triangles. this was satisfying to code up. <br>
+    i also made the grpahics better, so grey cells are untouched cells but for the ant they are treated the same as white. <br>
+    <video autoplay loop muted width="600" height="400" src="ant/2 state triangle zoomed.mp4" title="how it started"></video>
+    <video autoplay loop muted width="600" height="400" src="ant/2 state triangle 16x.mp4" title="how its goin (first 60 million steps)"></video> <br>
     
     above are the standard 2-state ant on a triangular grid. the result was suprising, i was expecting a cycle to form like the square grid but after 100 million steps it still didnt happen. <br>
-    the shape looks extremely symmetrical, a few differences can be seen in the centre chaotic cluster, and near the "axis of symmetry". because of these slight differences i thought it would eventually become asymmetric but again i didnt see that happen. <br>
-    i am going to run a similar program without the animation that tracks some number like the rate of change of the proportion of white to black and see if it stabilises after some massive number. <br>
-    perhaps it would be faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. food for thought. <br> <br>
-    <video autoplay loop muted width="600" height="400" src="ca/3 state triangle ant 50x.mp4" title="3 state ant, nearly 3 billion steps"></video> <br>
-    the 3-state ant acts about how i expected, because the directional change between steps is only 60 degrees, it seems intuitive to me that the ant has a hard time breaking out. <br>
+    the end result looks extremely symmetrical, a few differences can be seen in the central chaotic cluster, looking at the starting video it is clealy not symmetrical. <br>
+    because of these slight differences i thought it would eventually become asymmetric but i didnt see that happen after 100 million steps. <br>
+    i am going to make and run a modfied ant program without animation that tracks the proportion of white to black and see if it stabilises in a reasonable number of steps (as reasonable as my laptop can handle). <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/bvsw props plot.png"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/bvsw props log plot.png"><br>
+    these the results from said trial. the limiting factor is the grid size, my laptop cannot handle grid above 2500*5000 (the shape has to be like this to tile the full plane with the triangular grid style i used). <br>
+    while this is not indicative of a highway as i initially hoped, the growing star pattern could be a sort of stable solution. <br>   
+    *note after the fact: perhaps it would have been faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. but im not sure how i would go about this either. 
+    and even if it is possible to construct such a pattern, it is a different question to determine if the 2-state ant will ever reach it. <br> <br>
+
+    just for shits and giggles i ran the 2-state again with periodic boundaries to guarantee a break in the pattern. this was done ona 250x500 grid. <br>
+    <video autoplay loop muted width="600" height="400" src="ant/triangle periodic bondaries sped up.mp4 "></video><br> 
+    ok wtf i ran this for 250 mil steps, there are multiple times in the simulation where a clear asymmetry is created. and yet the overall pattern stays so solid. even to the point these asymmetries get repaired. <br>
+    i am pre confident this will end eventually, as the centre cluster of chaos is growing, even though the growth rate seems to get slower and slower. <br>
+    however, this work (without any real quantative analysis) has led me to believe that the 2-state langton ant on a triangular grid will never form a highway. <br><br>
+
+
+    movning on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL" (or in my case above "LR"). <br>
+    so for some string S of L's and R's, for any cell state i, the ant changes it the state (i+1)%N, where N is the length of the string S. this allows for easier testing of more complicated rules. <br>
+    my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in chaos. <br>
+    i looped through the positive numbers in binary and converted those to RL strings. here are a bunch of my results. <br> 
+    
     
 </p>
