@@ -57,14 +57,14 @@
     *note after the fact: perhaps it would have been faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. but im not sure how i would go about this either. 
     and even if it is possible to construct such a pattern, it is a different question to determine if the 2-state ant will ever reach it. <br> <br>
 
-    just for shits and giggles i ran the 2-state again with periodic boundaries to guarantee a break in the pattern. this was done ona 250x500 grid. <br>
+    just for shits and giggles i ran the 2-state again with periodic boundaries to guarantee a break in the pattern. this was done ona 250x500 grid. yes i accidentally inverted the colour scheme. <br>
     <video autoplay loop muted width="600" height="400" src="ant/triangle periodic bondaries sped up.mp4 "></video><br> 
     ok wtf i ran this for 250 mil steps, there are multiple times in the simulation where a clear asymmetry is created. and yet the overall pattern stays so solid. even to the point these asymmetries get repaired. <br>
-    i am pre confident this will end eventually, as the centre cluster of chaos is growing, even though the growth rate seems to get slower and slower. <br>
-    however, this work (without any real quantative analysis) has led me to believe that the 2-state langton ant on a triangular grid will never form a highway. <br><br>
+    the central chaos cluster appears to grow and shrink after the border has been reached. will this cluster eventually consume the entire grid? instinctually, i immediately think yes, it must, but this trianglular ant has made me wonder. <br>
+    this work (without any real quantative analysis or proof) has led me to believe that the 2-state langton ant on a non-periodic triangular grid will never form a highway. <br><br>
 
 
-    movning on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL" (or in my case above "LR"). <br>
+    moving on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL" (or in my case above "LR"). <br>
     so for some string S of L's and R's, for any cell state i, the ant changes it the state (i+1)%N, where N is the length of the string S. this allows for easier testing of more complicated rules. <br>
     my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in chaos. <br>
     i looped through the positive numbers in binary and converted those to RL strings. here are a bunch of my results. <br> 
