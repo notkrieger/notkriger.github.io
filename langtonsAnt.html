@@ -53,9 +53,10 @@
     <img style="max-width: 450px; max-height: 300px" src="ant/bvsw props plot.png"> 
     <img style="max-width: 450px; max-height: 300px" src="ant/bvsw props log plot.png"><br>
     these the results from said trial. the limiting factor is the grid size, my laptop cannot handle grid above 2500*5000 (the shape has to be like this to tile the full plane with the triangular grid style i used). <br>
+    besides im rly just trying to find cool stuff and this ant potentially never forms a highway (likely imo). <br>
     while this is not indicative of a highway as i initially hoped, the growing star pattern could be a sort of stable solution. <br>   
     *note after the fact: perhaps it would have been faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. but im not sure how i would go about this either. 
-    and even if it is possible to construct such a pattern, it is a different question to determine if the 2-state ant will ever reach it. <br> <br>
+    and even if it is possible to construct such a pattern, it is a different question to determine if the 2-state ant will ever reach it. my gut says no to both. <br> <br>
 
     just for shits and giggles i ran the 2-state again with periodic boundaries to guarantee a break in the pattern. this was done ona 250x500 grid. yes i accidentally inverted the colour scheme. <br>
     <video autoplay loop muted width="600" height="400" src="ant/triangle periodic bondaries sped up.mp4 "></video><br> 
@@ -94,10 +95,28 @@
     here are the patterns after 5 million steps for rules 843-995. as far as i can tell there are 2 non-random (one of which is highway so it was random before that occured). <br>
     <img style="max-width: 800px; max-height: 600px" src="ant/843-995.png"><br>
     unlike the square grid langtons ant which forms many unique and somewhat ordered patterns or highways, the triangular ant results in randomness most of the time. <br>
-    <br>
-    in the future  i might make a hexagonal grid ant. this would be the last of the regular n-gons which can tile the plane. <br>
-    since the actual shape of the tile doesnt matter i could also look into pentagonal tilings which use identical irregular n-gons. <br>
-    it will get a bit more difficult beyond hexagons because i don think you can tile the plane with an n-gon where n>6. <br>
+    <br> <br>
+    so i didnt stay away for long, i figured coding a hexagonal grid would be easy. I ran a bunch using just single turn left/right at each step. this produced identical results to triangular grid. <br>
+    on reflection this is not surprising because the triangle grid contains both right side up and up side down triangles so the ants possible directions are 0, 60, 120, 180, 240, 300 degrees, same as a hexagon. <br>
+    so i added in 2-right and 2-left indicated by 'r' and 'l' in the rules, which made some results i was happy with. <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_138_rLrr.jpeg" title="rLrr">
+    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_1051_RLLRrl.jpeg" title="RLLRrl">
+    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_1278_RLlllr.jpeg" title="RLlllr"> <br>
+    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_1494_RRlRRr.jpeg" title="RRlRRr, spiderman"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_2213_rLrrRR.jpeg" title="rLrrRR"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_503_RllRl.jpeg" title="RllRl">  <br>
+    i generated these rules in a similar. looping thru the integers, converting to base-4 and each digit corresponding to a possible turn direction. <br>
+    i then ran each ant until it exited the grid or reached 5 million steps. highways were extremely common, i would estimate over 50% including ones like spiderman above. <br>
+    of the remaining, most are random but i reckon a lot would highway if bigger grid/more time. <br>
+    the most interesting ones are the few that stabilised but not in a highway. many formed basic shapes filled with a single colour. <br>
+    my favourites were top left and bottom right, which show fractal like behaviour. <br>
+    <br> <br>
+    so obviously people have done langtons ant on this regular n-gon grid before. can i do it for other shapes?<br>
+    each edge of any of the grid shape must match to the edge of a different grid shape. this ensures no matter which direction the ant goes (exits it takes from the current tile)
+    does this force the shape to be convex? <br>
+    must the tiling be made of only one shape? i think it must because of the first rule. <br>
+    therefore im thinking the only shape it can be is a pentagon. <br>
 
-    
+
+
 </p>
