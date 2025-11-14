@@ -41,6 +41,7 @@
     i have seen videos online where people have found awesome patterns just by modifying the number of colours and the rules. <a href="https://www.youtube.com/watch?v=H7HhZUeKppk" target="_blank"> this video</a> shows some awesome ones with 16 rules. <br>
     other modifications i have seen are multiple ants at once and a 3d version, which both make the system much more complicated. <br>
     <br> <br>
+    <p style="font-size: 24px;"> Triangular Grid </p>
     i tried something i had not seen before and converted to grid made up of equilateral triangles. this was satisfying to code up. <br>
     i also made the grpahics better, so grey cells are untouched cells but for the ant they are treated the same as white. <br>
     <video autoplay loop muted width="600" height="400" src="ant/2 state triangle zoomed.mp4" title="how it started"></video>
@@ -91,11 +92,12 @@
     <img style="max-width: 450px; max-height: 300px" src="ant/928.jpeg" title="RRRLRLLLLL"> 
     <img style="max-width: 450px; max-height: 300px" src="ant/992.jpeg" title="RRRRRLLLLL"> <br>
     after running the first 1024 rules to 5 million steps each. i found a second highway at rule 928. <br>
-    remember it is likely there are more highways but need more steps to appear. <br>
+    i think it is highly likely there are many more highways but they need more steps to appear. <br>
     here are the patterns after 5 million steps for rules 843-995. as far as i can tell there are 2 non-random (one of which is highway so it was random before that occured). <br>
     <img style="max-width: 800px; max-height: 600px" src="ant/843-995.png"><br>
-    unlike the square grid langtons ant which forms many unique and somewhat ordered patterns or highways, the triangular ant results in randomness most of the time. <br>
+    unlike the square grid langtons ant which forms many unique and somewhat ordered patterns or highways, the triangular ant was much less interesting. <br>
     <br> <br>
+    <p style="font-size: 24px;"> Hexagonal Grid </p>
     so i didnt stay away for long, i figured coding a hexagonal grid would be easy. I ran a bunch using just single turn left/right at each step. this produced identical results to triangular grid. <br>
     on reflection this is not surprising because the triangle grid contains both right side up and up side down triangles so the ants possible directions are 0, 60, 120, 180, 240, 300 degrees, same as a hexagon. <br>
     so i added in 2-right and 2-left indicated by 'r' and 'l' in the rules, which made some results i was happy with. <br>
