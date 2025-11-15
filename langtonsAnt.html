@@ -43,82 +43,47 @@
     <br> <br>
     <p style="font-size: 24px;"> Triangular Grid </p>
     i tried something i had not seen before and converted to grid made up of equilateral triangles. this was satisfying to code up. <br>
-    i also made the grpahics better, so grey cells are untouched cells but for the ant they are treated the same as white. <br>
-    <video autoplay loop muted width="600" height="400" src="ant/2 state triangle zoomed.mp4" title="how it started"></video>
-    <video autoplay loop muted width="600" height="400" src="ant/2 state triangle 16x.mp4" title="how its goin (first 60 million steps)"></video> <br>
+    i also made the graphics better, so grey cells are untouched cells but for the ant they are treated the same as white. <br>
+    <video autoplay loop muted width="600" height="400" src="ant/triangle ant early steps.mp4" title="how it started"></video>
+    <video autoplay loop muted width="600" height="400" src="ant/triangle ant later steps.mp4" title="how its goin"></video> <br>
     
     above are the standard 2-state ant on a triangular grid. the result was suprising, i was expecting a cycle to form like the square grid but after 100 million steps it still didnt happen. <br>
     the end result looks extremely symmetrical, a few differences can be seen in the central chaotic cluster, looking at the starting video it is clealy not symmetrical. <br>
-    because of these slight differences i thought it would eventually become asymmetric but i didnt see that happen after 100 million steps. <br>
-    i am going to make and run a modfied ant program without animation that tracks the proportion of white to black and see if it stabilises in a reasonable number of steps (as reasonable as my laptop can handle). <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/bvsw props plot.png"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/bvsw props log plot.png"><br>
-    these the results from said trial. the limiting factor is the grid size, my laptop cannot handle grid above 2500*5000 (the shape has to be like this to tile the full plane with the triangular grid style i used). <br>
-    besides im rly just trying to find cool stuff and this ant potentially never forms a highway (likely imo). <br>
-    while this is not indicative of a highway as i initially hoped, the growing star pattern could be a sort of stable solution. <br>   
-    *note after the fact: perhaps it would have been faster to see if a repeating pattern like the original langton ant can even occur at all in a triangular grid. but im not sure how i would go about this either. 
-    and even if it is possible to construct such a pattern, it is a different question to determine if the 2-state ant will ever reach it. my gut says no to both. <br> <br>
-
-    just for shits and giggles i ran the 2-state again with periodic boundaries to guarantee a break in the pattern. this was done ona 250x500 grid. yes i accidentally inverted the colour scheme. <br>
-    <video autoplay loop muted width="600" height="400" src="ant/triangle periodic bondaries sped up.mp4 "></video><br> 
-    ok wtf i ran this for 250 mil steps, there are multiple times in the simulation where a clear asymmetry is created. and yet the overall pattern stays so solid. even to the point these asymmetries get repaired. <br>
-    the central chaos cluster appears to grow and shrink after the border has been reached. will this cluster eventually consume the entire grid? instinctually, i immediately think yes, it must, but this trianglular ant has made me wonder. <br>
-    this work (without any real quantative analysis or proof) has led me to theorise that the 2-state langton ant on a non-periodic triangular grid will never form a highway. <br><br>
-
-
-    moving on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL" (or in my case above "LR"). <br>
-    so for some string S of L's and R's, for any cell state i, the ant changes it the state (i+1)%N, where N is the length of the string S. this allows for easier testing of more complicated rules. <br>
-    my goal is to try and find a highway on the triangular grid. this is easier said then done, for any N there are 2<sup>N</sup> possible ants and most of them result in seeming randomness. <br>
-    i looped through the positive numbers in binary and converted those to RL strings, then ran the ant >2.5 million steps. here are a bunch of my results. <br> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/42.jpeg" title="RLRLRL, 2-state-like">
-    <img style="max-width: 450px; max-height: 300px" src="ant/141.jpeg" title="RLLLRRLR"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/298.jpeg" title="RLLRLRLRL, seeming randomness with small areas of order"> <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/384.jpeg" title="RRLLLLLLL, this ones just fucken sick"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/98.jpeg" title="RRLLLRL"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/410.jpeg" title="RRLLRRLRL, first highway i found"> <br>
-    so as far as i can see the ants form 4 general patterns. <br>
-    1. 2-state-like patterns, these generally occur with a rule like "RLRLRL" (top left) or "RRRLLL". so they get increasingly rare as N increases. <br>
-    2. hexagonal patterns. not sure what makes these to occur but they come in 2 forms: <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;2a. layered hexagon pattern (bottom left), these seem to be formed by rules with long strings of consecutive L's with just a couple R's. the best ones the R's are also consecutive. <br>
-    &nbsp;&nbsp;&nbsp;&nbsp;2b. random hexagon (top middle), these do seem to have layers when being constructed but also get removed and replaced w randomness in construction. <br>
-    3. fully random patterns, no obvious shape. these are by far the most frequent. generally completely random (bottom middle), occasionally have some order (top right). <br>
-    4. highway/stable patterns (bottom right), this is the only one i found so far :) <br>
-
-    <br>
-    the apparent order in the random patterns could arise because of when the program was stopped. perhaps running another 1000 steps wouldve changed it to randomness. <br>
-    of course by this same token of thought, there could be many highways which occur with simpler rules but require >10 million steps to begin. <br>
-    overall im pre satisfied with what i produced here. i found a highway, which for a while there i wasnt even sure that was possible. <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/769.jpeg" title="RRLLLLLLLR"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/928.jpeg" title="RRRLRLLLLL"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/992.jpeg" title="RRRRRLLLLL"> <br>
-    after running the first 1024 rules to 5 million steps each. i found a second highway at rule 928. <br>
+    because of these slight differences i thought it would eventually become obviously asymmetric or form a highway, i was wrong. <br>
+    
+    moving on, now i am going to generalise my code by defining an ant by a sequence of L's and R's. so the original 2-state langton ant can be described as "RL". <br>
+    this means if the ant is on a tile which is in state 0 (grey counts as state 0) it goes right and if it is in state 1 it goes left. or in programming terms: use the ith instruction of the rule string when the cell below is state i. <br>
+    so for some string S of L's and R's, for any cell state i, the ant changes it the state (i+1)%N, where N is the length of the string S.  <br>
+    my goal is to try and find a highway on the triangular grid. <br>
+    my approach was to iterate thru the binary numbers substituting 1 for R and 0 for L. then run an ant with that rule for 5 million steps. here are some results. <br> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/240_RRRRLLLL.jpeg" title="RRRRLLLL"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/384_RRLLLLLLL.jpeg" title="RRLLLLLLL"> 
+    <img style="max-width: 450px; max-height: 300px" src="ant/410_RRLLRRLRL.jpeg" title="RRLLRRLRL, first highway i found"> <br>
+    after running the first 1024 rules, i found a second highway at rule 928. <br>
     i think it is highly likely there are many more highways but they need more steps to appear. <br>
-    here are the patterns after 5 million steps for rules 843-995. as far as i can tell there are 2 non-random (one of which is highway so it was random before that occured). <br>
-    <img style="max-width: 800px; max-height: 600px" src="ant/843-995.png"><br>
+    
     unlike the square grid langtons ant which forms many unique and somewhat ordered patterns or highways, the triangular ant was much less interesting. <br>
     <br> <br>
+
     <p style="font-size: 24px;"> Hexagonal Grid </p>
     so i didnt stay away for long, i figured coding a hexagonal grid would be easy. I ran a bunch using just single turn left/right at each step. this produced identical results to triangular grid. <br>
     on reflection this is not surprising because the triangle grid contains both right side up and up side down triangles so the ants possible directions are 0, 60, 120, 180, 240, 300 degrees, same as a hexagon. <br>
     so i added in 2-right and 2-left indicated by 'r' and 'l' in the rules, which made some results i was happy with. <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_138_rLrr.jpeg" title="rLrr">
-    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_1051_RLLRrl.jpeg" title="RLLRrl">
-    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_1278_RLlllr.jpeg" title="RLlllr"> <br>
-    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_1494_RRlRRr.jpeg" title="RRlRRr, spiderman"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_2213_rLrrRR.jpeg" title="rLrrRR"> 
-    <img style="max-width: 450px; max-height: 300px" src="ant/directions_4_503_RllRl.jpeg" title="RllRl">  <br>
-    i generated these rules in a similar. looping thru the integers, converting to base-4 and each digit corresponding to a possible turn direction. <br>
-    i then ran each ant until it exited the grid or reached 5 million steps. highways were extremely common, i would estimate over 50% including ones like spiderman above. <br>
-    of the remaining, most are random but i reckon a lot would highway if bigger grid/more time. <br>
-    the most interesting ones are the few that stabilised but not in a highway. many formed basic shapes filled with a single colour. <br>
-    my favourites were top left and bottom right, which show fractal like behaviour. <br>
-    <br> <br>
-    so obviously people have done langtons ant on this regular n-gon grid before. can i do it for other shapes?<br>
-    each edge of any of the grid shape must match to the edge of a different grid shape. this ensures no matter which direction the ant goes (exits it takes from the current tile)
-    does this force the shape to be convex? <br>
-    must the tiling be made of only one shape? i think it must because of the first rule. <br>
-    therefore im thinking the only shape it can be is a pentagon. <br>
 
+    i generated these rules in a similar. looping thru the integers, converting to base-4 and each digit corresponding to a possible turn direction. <br>
+    
+    
+
+    <br> <br>
+    <p style="font-size: 24px;"> Further Exploration - Pentagonal Grid </p>
+    so obviously people have done langtons ant on all of the regular n-gon grids ive done here. can i do it for other shapes? <br>
+    the tiling must have the following properties: <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;1. each edge of a tile must match to a single edge of another shape. <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;2. no two edges of a tile can match to the same tile. <br>
+    these properties will ensure the ant always has a single path to take given a direction and that there are n-1 possible directions (excluding the way it entered the tile). <br>
+    claim: this forces the tileset to be made of a single convex tile. <br>
+    proof: exercise for reader. <br>
+    this means only a pentagonal grid is possible, as no convex monotile solutions exist for n > 6. <br>
 
 
 </p>
