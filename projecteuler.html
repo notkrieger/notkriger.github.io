@@ -22,7 +22,7 @@
     spoilers ahead if you want to try for yourself do not look at solutions. <br>
     solutions will probably be in python. <br>
     it is very unlikely these are optimals solutions. <br>
-    solved: 31, 78, 173, 174, 109, 144, 86, 102 <br><br>
+    listed: 31, 78, 173, 174, 109, 144, 86, 102, 204 <br><br>
 
 </p>
 
@@ -220,15 +220,14 @@
     A type-n hamming number is a positive integer that has no prime factor greater then n. For examples, there are 1105 type-5 hamming numbers less then 10<sup>8</sup>. <br>
     How many type-100 hamming numbers are there less then 10<sup>9</sup>?<br>
     my first instinct is to generate the prime up to 100, loop through all combinations of factors and count how many are less then the target. <br>
-    this brute force approach works but too slowly. To optimise i created an array of exponents to loop through the combinations and when a given combo exceeded the target, I skipped as much as possible. <br>
+    this brute force approach works, but too slowly. To optimise i created an array of exponents to loop through the combinations and when a given combo exceeded the target, I skipped as much as possible. <br>
     for example, with the type-5 hamming numbers exceding 1000. i have an array called primes = [2,3,5] and an array called exps=[0,0,0]. <br>
     firstly i calculate my power-product, res = primes[0]<sup>exps[0]</sup> x primes[1]<sup>exps[1]</sup> x primes[2]<sup>exps[2]</sup> (ofc account for zero case :/)<br>
     i then increment this array each loop as if it was a number with different bases??? idk bout the math of this but its how my code works. <br>
     so in this example, exps[0] cannot exceed 10 (2<sup>10</sup>>1000), exps[1] cannot exceed 7 (3<sup>7</sup>>1000), etc. <br>
     finally there will be situation going to the next state will still exceed the target. eg. exps = [5,5,1], rule above dictates next exps = [6,5,1], but since [5,5,1] exceeds the target, [6,5,1] is guaranteed to also. <br>
     so in this cases i skip ahead to the next state which is less then the target. this is done by setting more and more values to zero from left to right. so check if [0,6,1] exceeds, if so skip to [0,0,2]. <br>
-    and yea im pre happy, code ran in less then a second once njit sorted all its shit out :) <br>
-    because of nature of primes the same number will never be generated twice.
+    and yea im pre happy, code ran in less then a second once numba sorted all its shit out :) <br>
     pe difficulty: 30/100 <br>
     <a href="projecteuler/204 solution.png" target="_blank"> show solution </a> <br>
     solved: 2/12/25
