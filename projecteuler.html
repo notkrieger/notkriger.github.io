@@ -20,9 +20,9 @@
 <p>
     some of my methods for solving some project euler problems i found interesting/challenging. <br>
     spoilers ahead if you want to try for yourself do not look at solutions. <br>
-    solutions will probably be in python. <br>
+    solutions will probably be in python (maybe rust too, im learning). <br>
     it is very unlikely these are optimals solutions. <br>
-    listed: 31, 78, 173, 174, 109, 144, 86, 102, 204 <br><br>
+    listed: 31, 78, 173, 174, 109, 144, 86, 102, 204, 351 <br><br>
 
 </p>
 
@@ -225,20 +225,43 @@
     firstly i calculate my power-product, res = primes[0]<sup>exps[0]</sup> x primes[1]<sup>exps[1]</sup> x primes[2]<sup>exps[2]</sup> (ofc account for zero case :/)<br>
     i then increment this array each loop as if it was a number with different bases??? idk bout the math of this but its how my code works. <br>
     so in this example, exps[0] cannot exceed 10 (2<sup>10</sup>>1000), exps[1] cannot exceed 7 (3<sup>7</sup>>1000), etc. <br>
-    finally there will be situation going to the next state will still exceed the target. eg. exps = [5,5,1], rule above dictates next exps = [6,5,1], but since [5,5,1] exceeds the target, [6,5,1] is guaranteed to also. <br>
+    finally there will be situation going to the next state will still exceed the target. eg. exps = [5,5,1], rule above dictates next exps = [6,5,1], but since [5,5,1] also exceeds the target, [6,5,1] is guaranteed to also. <br>
     so in this cases i skip ahead to the next state which is less then the target. this is done by setting more and more values to zero from left to right. so check if [0,6,1] exceeds, if so skip to [0,0,2]. <br>
     and yea im pre happy, code ran in less then a second once numba sorted all its shit out :) <br>
     pe difficulty: 30/100 <br>
     <a href="projecteuler/204 solution.png" target="_blank"> show solution </a> <br>
-    solved: 2/12/25
+    solved: 2/12/25<br><br>
+    some more thinking on this, could you make this better by starting at the target and dividing through by decreasing primes, similar to the process in coin sums? i think this would work and allow for a dynamic progrmaming solution. <br>
+    <br><br><br>    
+</p>
+
+<p>
+    <p style="font-size: 24px;"> #351 Hexagonal Orchards </p>
+    susppose you have an orchard where trees are placed in a hexagonal lattice. an order(n) orchard has n hexagons of increasing size, order(5) is pictured left below. <br>
+    if you were standing at the centre certain trees would be blocked from view by other trees, indicated as green. <br>
+    call f(n) the number of hidden trees in an order(n) orchard. solve (f(10<sup>8</sup>)). <br>
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/351 example.png">
+    <img style="max-width: 400px; max-height: 300px" src="projecteuler/351 symmetry.png"> <br>
+    the triangle has lots of symmetry we can take advantage of. so my initial brute force solution was to run through a subtriangle row by row, check if the i, j are coprime and yada-yada. <br>
+    too slow, the important step in that process is the coprime checking. <br> 
+    after doing some of these problems, ive learnt a bit of research can do wonders. i found the euler totient function φ(n), which is the number of integers less then n which are coprime to n. <br>
+    this removes the inner loop from the brute force method, and replaces it with the totient function which is better. <br>
+    the other big speed up was to count the "blocker" trees rather then hidden ones. for every blocker there is a unique set of hidden trees, which form a simple linear sequence (in terms of distance, (i, j), whatever). this sequence will be n//i long. <br>
+    of course this includes the blocker tree so remove one from that. and done, number hidden trees in a subtriangle is sum of φ(i) x (n//i - 1) for i 2..n//2 + 1 <br>
+    only need to iterate to n//2 because any blocker tree after that, the first hidden tree will be at a row m > n, so redundant. <br>
+    pe difficulty: 25/100 <br>
+    <a href="projecteuler/351solution.png" target="_blank"> show solution </a> <br>
+    solved: 7/12/25<br><br>
     <br><br><br>    
 </p>
 
 <p>
     <p style="font-size: 24px;"> #360 - Scary Sphere </p>
+started by solving 139 -- learning about parameterised solutions for pythagorean triples. blackpenredpen had a good video
+
     consider the sphere of radius n centred on the origin, the set of all integer solutions to that sphere is I(n). find the sum of the manhattan distances to the origin of I(10<sup>10</sup>). <br>
     i have not quite solved this problem yet. idk y im putting it here yet, i thought i was about to solve it :( <br>
-    my current solution generates the points in O(n<sup>2</sup>), it is my attempt and is much more optimised then my orginal algorithm. but still way too slow. 
+    my current solution generates the points in O(n<sup>2</sup>), it is my best attempt yet and is much more optimised then my orginal algorithm. but still way too slow. 
     <a href="projecteuler/final optimisation attempt 4, need to find linear or multiprocess or something.png" target="_blank"> current attempt </a> <br>
     i need a way to generate I(n) in linear time or i need to use multiprocessing or threading or some thing. <br>
     i am really struggling to see how you could generate I(n) in linear time, so i am going to attempt strategy 2 next. <br>
