@@ -20,7 +20,6 @@
 <p>
     some of my methods for solving some project euler problems i found interesting/challenging. <br>
     spoilers ahead if you want to try for yourself do not look at solutions. <br>
-    solutions will probably be in python (maybe rust too, im learning). <br>
     it is very unlikely these are optimals solutions. <br>
     listed: 31, 78, 173, 174, 109, 144, 86, 102, 204, 351 <br><br>
 
@@ -247,15 +246,16 @@
     after doing some of these problems, ive learnt a bit of research can do wonders. i found the euler totient function φ(n), which is the number of integers less then n which are coprime to n. <br>
     this removes the inner loop from the brute force method, and replaces it with the totient function which is better. <br>
     the other big speed up was to count the "blocker" trees rather then hidden ones. for every blocker there is a unique set of hidden trees, which form a simple linear sequence (in terms of distance, (i, j), whatever). this sequence will be n//i long. <br>
-    of course this includes the blocker tree so remove one from that. and done, number hidden trees in a subtriangle is sum of φ(i) x (n//i - 1) for i 2..n//2 + 1 <br>
+    of course this includes the blocker tree so remove one from that. and done, number hidden trees in a subtriangle is sum of φ(i) * (n//i - 1) for i 2..n//2 + 1 <br>
     only need to iterate to n//2 because any blocker tree after that, the first hidden tree will be at a row m > n, so redundant. <br>
+    this code took like 15 minutes to run on my laptop, i read this pdf they give after solving and there are sub linear algorithms to solve this, which is cool, i will recreate one to use in the future. i hope they have more of these pdfs. <br>
     pe difficulty: 25/100 <br>
     <a href="projecteuler/351solution.png" target="_blank"> show solution </a> <br>
     solved: 7/12/25<br><br>
 
     interestingly looking at f(n) for n = 10<sup>i</sup>, the solutions seem to be converging. <br>
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/351 sols interesting.png"> <br>
-    dunno what this means but is interesting. im sure someone has done extensive research into this. <br>
+    dunno what this means but is interesting. is it just kx+c where x is the totient function, i suspect so but im tired. im sure someone has done extensive research into this. <br>
     <br><br><br>    
 </p>
 
