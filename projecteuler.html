@@ -146,6 +146,7 @@
     this was more difficult then it seemed on the tin. the difficultly mainly comes from working around the rules for what is and is not a unique checkout. <br>
     fortunately a dartboard only has 62 areas cos my algorithm is O(a<sup>3</sup>) where a is the number of areas on a dartboard. <br>
     i think my solution is decent (less then a second on my laptop :o) but would be interesting to see what the best way to solve if problem was larger; more darts, more areas, etc.  <br>
+    dunno why i went full on explaining mode for this paragraph, haha, even drew pictures. <br> 
     pe difficulty: 45/100 <br>
     <a href="projecteuler/109 dart solution.png" target="_blank"> show solution </a> <br>
     solved: 27/10/25
@@ -238,7 +239,7 @@
     <p style="font-size: 24px;"> #351 Hexagonal Orchards </p>
     susppose you have an orchard where trees are placed in a hexagonal lattice. an order(n) orchard has n hexagons of increasing size, order(5) is pictured left below. <br>
     if you were standing at the centre certain trees would be blocked from view by other trees, indicated as green. <br>
-    call f(n) the number of hidden trees in an order(n) orchard. solve (f(10<sup>8</sup>)). <br>
+    call f(n) the number of hidden trees in an order(n) orchard. solve f(10<sup>8</sup>). <br>
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/351 example.png">
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/351 symmetry.png"> <br>
     the triangle has lots of symmetry we can take advantage of. so my initial brute force solution was to run through a subtriangle row by row, check if the i, j are coprime and yada-yada. <br>
@@ -256,6 +257,8 @@
     interestingly looking at f(n) for n = 10<sup>i</sup>, the solutions seem to be converging. <br>
     <img style="max-width: 400px; max-height: 300px" src="projecteuler/351 sols interesting.png"> <br>
     dunno what this means but is interesting. is it just kx+c where x is the totient function, i suspect so but im tired. im sure someone has done extensive research into this. <br>
+    on second thought, this is just the euler totient sum function multiplied by 6. so i think the euler totient sum must approach some constant like thing. <br>
+    im struggling to think of a good word for it, its like a ratio approximation for pi or the golden ratio improving as n grows, but on the right side of the decimal point. <br>
     <br><br><br>    
 </p>
 
